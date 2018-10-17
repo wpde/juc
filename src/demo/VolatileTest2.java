@@ -2,7 +2,7 @@ package demo;
 
 public class VolatileTest2 extends Thread {
      
-     boolean flag = false;
+     volatile boolean flag = false;
      int i = 0;
      
      public void run() {

@@ -14,8 +14,8 @@ public class AtomicTest {
 
 class MyThread implements Runnable{
 	
-//	private volatile int i=1;
-	AtomicInteger at=new AtomicInteger();
+	private volatile int i=1;
+//	AtomicInteger at=new AtomicInteger();
 	@Override
 	public void run() {
 		try {
@@ -23,7 +23,8 @@ class MyThread implements Runnable{
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println(Thread.currentThread().getName()+":"+at.getAndIncrement());
+//		System.out.println(Thread.currentThread().getName()+":"+at.getAndIncrement());
+		System.out.println(Thread.currentThread().getName()+":"+i++);
 	}
 	
 }
