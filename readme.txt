@@ -11,4 +11,6 @@ juc即java.util.concurrent简称
 3.concurrentHashMap:concurrent包提供的并发容器类来改进同步容器性能
 	采用“锁分段”机制，jdk1.8之后采用CAS算法实现
 
-4.countDownLatch闭锁	
+4.countDownLatch闭锁
+作用：在完成一组其他线程操作之前，允许一个或多个线程一直等待
+			
