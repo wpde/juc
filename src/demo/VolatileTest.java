@@ -28,8 +28,8 @@ public class VolatileTest extends Thread {
 }
 
 class ThreadDemo implements Runnable {
-//	private boolean flag=false;
-	private  volatile boolean flag = false;
+	private boolean flag=false;
+//	private  volatile boolean flag = false;
 
 	@Override
 	public void run() {

@@ -13,4 +13,7 @@ juc即java.util.concurrent简称
 
 4.countDownLatch闭锁
 作用：在完成一组其他线程操作之前，允许一个或多个线程一直等待
+
+5.callable创建线程
+作用：使用callable接口创建线程，用FutureTask接受线程执行的结果（类似于countdownlatch）
 			
