@@ -16,4 +16,6 @@ juc即java.util.concurrent简称
 
 5.callable创建线程
 作用：使用callable接口创建线程，用FutureTask接受线程执行的结果（类似于countdownlatch）
+
+6.lock线程锁
 			
