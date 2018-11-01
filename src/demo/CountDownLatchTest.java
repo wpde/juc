@@ -20,7 +20,6 @@ public class CountDownLatchTest {
 		try {
 			count.await();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		int end =(int) System.currentTimeMillis();
