@@ -29,6 +29,7 @@ public class TradtionThreadCommunication {
 class Task{
 	private boolean res=false;
 	public synchronized void Ch(int j){
+		//while ?
 		if(res) {
 			try {
 				this.wait();
