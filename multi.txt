@@ -48,5 +48,8 @@
 	9.condition线程之间通信，由Lock锁提供支持
 	Condition能够支持不响应中断，而通过使用Object方式不支持；
 	Condition能够支持多个等待队列（new 多个Condition对象），而Object方式只能支持一个；
-	Condition能够支持超时时间的设置，而Object不支持	
+	Condition能够支持超时时间的设置，而Object不支持
+	
+	10.线程池
+	Executors.newXXXX类型的线程池	
 				

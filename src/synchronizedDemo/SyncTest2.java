@@ -25,19 +25,20 @@ public class SyncTest2 {
 			i++;
 			System.out.println("i=" +i);
 			
-			if(i==10) {
-				Integer.parseInt("a");
-			}
+			//不对异常进行处理
+//			if(i==10) {
+//				Integer.parseInt("a");
+//			}
 			
-			
-			/*try {
+			//对异常进行try/catch 处理
+			try {
 				if(i==10) {
 					Integer.parseInt("a");
 				}
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
 				System.out.println(" loginfo : i=" +i);
-			}*/
+			}
 		}
 	}
 	public synchronized void m2() {
