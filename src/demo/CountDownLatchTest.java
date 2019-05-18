@@ -12,7 +12,7 @@ public class CountDownLatchTest {
 	
 	public static void main(String[] args) {
 		CountDownLatch count =new CountDownLatch(5);
-		MyThreadForConunt t=new MyThreadForConunt(count );
+		MyThreadForConunt t=new MyThreadForConunt(count);
 		int begin=(int) System.currentTimeMillis();
 		for (int i = 0; i < 5; i++) {
 			new Thread(t).start();

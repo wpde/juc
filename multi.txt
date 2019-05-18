@@ -1,55 +1,77 @@
-	多线程访问共享数据和对象的方式：
-	1.如果每个线程执行的代码相同，可以使用一个Runnable对象，Runnable对象中有那个共享数据，例如卖票系统
-	2.如果每个线程执行的代码不同，需多个Runnable对象，实现对象之间的数据共享方式：
-		将共享数据封装在另外一个对象中，线程对共享数据操作的方法也分配到对象中。将这个对象传递给Runnable对
-		象，或者Runnable可以使用这个对象
+多线程访问共享数据和对象的方式：
+1.如果每个线程执行的代码相同，可以使用一个Runnable对象，Runnable对象中有那个共享数据，例如卖票系统
+2.如果每个线程执行的代码不同，需多个Runnable对象，实现对象之间的数据共享方式：
+	将共享数据封装在另外一个对象中，线程对共享数据操作的方法也分配到对象中。将这个对象传递给Runnable对
+	象，或者Runnable可以使用这个对象
+
+java锁的种类:（https://www.cnblogs.com/hustzzl/p/9343797.html）
+1.悲观锁/乐观锁
+2.独享锁/共享锁（互斥锁/读写锁）
+3.可重入锁
+4.公平锁/非公平锁
+	公平锁：ReentrantLock添加参数true
+5.分段锁
+	如：concurrentHashMap
+5.偏向锁/轻量级锁/重量级锁
+6.自旋锁
 	
-	用于解决多线程同步问题
-	1.隐试锁：
-			同步代码块或者同步方法
-	2.显示锁如：
-			同步锁 lock(jdk1.5以后)，通过lock()方法上锁，必须通过unlock()解锁
-			读写锁
-	3.读写锁(ReadWriteLock)
-			分为读锁和写锁
+用于解决多线程同步问题
+1.隐试锁：
+		同步代码块或者同步方法
+2.显示锁如：
+		同步锁 lock(jdk1.5以后)，通过lock()方法上锁，必须通过unlock()解锁
+3.读写锁(ReadWriteLock)
+		分为读锁和写锁
+		
+
 	
-	1.volatile
-	作用：用volatile修饰的变量，线程在每次使用变量的时候，都会读取变量修改后的最新的值（内存可见性）
-		 不能保证原子性	
-		 
-	2.Atomic原子类
-	作用：保证内存可见性和
-		 原子性，操作不可分割如：i++（通过cas算法实现）
 	
-	3.concurrentHashMap:concurrent包提供的并发容器类来改进同步容器性能
-		采用“锁分段”机制，jdk1.8之后采用CAS算法实现
+1.volatile
+作用：用volatile修饰的变量，线程在每次使用变量的时候，都会读取变量修改后的最新的值（内存可见性）
+	 不能保证原子性	
+	 
+2.Atomic原子类
+作用：保证内存可见性和
+	 原子性，操作不可分割如：i++（通过cas算法实现）
 	
-	4.countDownLatch闭锁
-	作用：在完成一组其他线程操作之前，允许一个或多个线程一直等待
+3.concurrentHashMap:concurrent包提供的并发容器类来改进同步容器性能
+	采用“锁分段”机制，jdk1.8之后采用CAS算法实现
 	
-	5.callable创建线程
-	作用：使用callable接口创建线程，用FutureTask接受线程执行的结果（类似于countdownlatch）
+4.countDownLatch闭锁
+作用：在完成一组其他线程操作之前，允许一个或多个线程一直等待
 	
-	6.lock线程锁
-	作用：解决线程同步问题
-		condition类似于object对象中的wait和notify方法
-		内部使用了一个阻塞队列实现
+5.callable创建线程
+作用：使用callable接口创建线程，用FutureTask接受线程执行的结果（类似于countdownlatch）
 	
-	7.ThreadLocal线程本地变量
-	作用：为每一个线程都创建一个副本，线程可以访问自己内部的副本变量，只能存储一个对象
+6.lock线程锁
+作用：解决线程同步问题
+	condition类似于object对象中的wait和notify方法
+	内部使用了一个阻塞队列实现
 	
-	8.Executer执行器
-	作用：管理Thread对象从而简化并发编程
-	excute方法与submit方法的区别
-	1.接受参数不一样
-	2.submit与返回值，excute没有返回值
-	3.submit可以进行Exception处理
+7.ThreadLocal线程本地变量
+作用：为每一个线程都创建一个副本，线程可以访问自己内部的副本变量，只能存储一个对象
 	
-	9.condition线程之间通信，由Lock锁提供支持
-	Condition能够支持不响应中断，而通过使用Object方式不支持；
-	Condition能够支持多个等待队列（new 多个Condition对象），而Object方式只能支持一个；
-	Condition能够支持超时时间的设置，而Object不支持
+8.Executer执行器
+作用：管理Thread对象从而简化并发编程
+excute方法与submit方法的区别
+1.接受参数不一样
+2.submit与返回值，excute没有返回值
+3.submit可以进行Exception处理
 	
-	10.线程池
-	Executors.newXXXX类型的线程池	
-				
+9.condition线程之间通信，由Lock锁提供支持
+Condition能够支持不响应中断，而通过使用Object方式不支持；
+Condition能够支持多个等待队列（new 多个Condition对象），而Object方式只能支持一个；
+Condition能够支持超时时间的设置，而Object不支持
+	
+10.线程池
+Executors.newXXXX类型的线程池	
+			
+11.悲观所和乐观锁
+	乐观锁：顾名思义，就是很乐观，每次去拿数据的时候都认为别人不会修改，所以不会上锁，
+	但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用版本号等机制。
+　　悲观锁：总是假设最坏的情况，每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁
+	
+12.await/signal/signalAll
+	通过Lock对象的newCondition方法获取Condition对象调用方法
+	await/signal/signalAll方法对应Object对象的wait/notify/notifyAll方法
+	
