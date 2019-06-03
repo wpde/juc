@@ -30,7 +30,7 @@ class Task{
 	private boolean res=false;
 	public synchronized void Ch(int j){
 		//while ?
-		if(res) {
+		while(res) {
 			try {
 				this.wait();
 			} catch (InterruptedException e) {
@@ -45,7 +45,7 @@ class Task{
 	}
 	
 	public synchronized void Fa(int j) {
-		if(!res) {
+		while(!res) {
 			try {
 				this.wait();
 			} catch (InterruptedException e) {
